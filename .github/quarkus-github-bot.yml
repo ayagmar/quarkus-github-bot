@@ -1,0 +1,52 @@
+---
+# The format of this file is documented here:
+# https://github.com/quarkusio/quarkus-github-bot#triage-issues
+features: [ALL]
+develocity:
+  enabled: true
+  url: "https://ge.quarkus.io/"
+workflows:
+  rules:
+    - allow:
+        users:
+          minContributions: 10
+        files:
+          - "**/*.md"
+          - "**/*.adoc"
+workflowRunAnalysis:
+  workflows: ["Quarkus CI", "Quarkus Documentation CI"]
+projectsClassic:
+  rules:
+    - labels: [area/documentation]
+      project: 21
+      issues: true
+      pullRequests: true
+      status: To do
+projects:
+  rules:
+    - labels: [area/jakarta]
+      project: 13
+      issues: true
+      pullRequests: true
+      status: Todo
+    - labels: [triage/quarkus-3]
+      project: 13
+      issues: true
+      pullRequests: true
+      status: Todo
+triage:
+  discussions:
+    monitoredCategories: [33575230]
+  guardedBranches:
+    - ref: 'main'
+      notify: [ayagmar]
+  rules:
+    - id: amazon-lambda
+      labels: [area/amazon-lambda]
+      title: "lambda"
+      notify: [ayagmar]
+      directories:
+        - extensions/amazon-lambda
+        - integration-tests/amazon-lambda
+  qe:
+    notify: [rsvoboda, mjurc]
