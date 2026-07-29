@@ -1,5 +1,7 @@
 package io.quarkus.bot.util;
 
+import java.util.stream.Collectors;
+
 import jakarta.el.ELContext;
 import jakarta.el.ELManager;
 import jakarta.el.ExpressionFactory;
@@ -51,7 +53,14 @@ public final class Triage {
 
         try {
             if (Strings.isNotBlank(rule.expression)) {
-                String expression = "${" + rule.expression + "}";
+                String sanitizedExpression = rule.expression.lines()
+                        .map(line -> {
+                            int commentIndex = line.indexOf("//");
+                            return commentIndex >= 0 ? line.substring(0, commentIndex) : line;
+                        })
+                        .collect(Collectors.joining("\n"))
+                        .trim();
+                String expression = "${" + sanitizedExpression + "}";
 
                 ExpressionFactory expressionFactory = ELManager.getExpressionFactory();
 

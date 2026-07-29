@@ -26,6 +26,6 @@ COPY --chown=1001:root --chmod=0755 target/*-runner /work/application
 EXPOSE 8080
 USER 1001
 
-ENV QUARKUS_OPTS=-Dquarkus.http.host=0.0.0.0 -Xmx150m
+ENV QUARKUS_OPTS=-Dquarkus.http.host=0.0.0.0 -Xmx250m
 
-ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx150m"]
+ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx250m"]

@@ -23,8 +23,6 @@ public class QuarkusGitHubBotConfigFile {
 
     public Projects projects = new Projects();
 
-    public ProjectsClassic projectsClassic = new ProjectsClassic();
-
     public Workflows workflows = new Workflows();
 
     public Develocity develocity = new Develocity();
@@ -111,11 +109,6 @@ public class QuarkusGitHubBotConfigFile {
     }
 
     public static class Projects {
-
-        public List<ProjectTriageRule> rules = new ArrayList<>();
-    }
-
-    public static class ProjectsClassic {
 
         public List<ProjectTriageRule> rules = new ArrayList<>();
     }
